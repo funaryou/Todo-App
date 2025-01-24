@@ -1,0 +1,20 @@
+services:
+  todo:
+    build: ./
+    volumes:
+      - .:/todo
+    ports:
+      - 8003:8000
+
+  db:
+    image: mysql:8.3
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: todo_dev_sql
+      MYSQL_ROOT_PASSWORD: devsql0256
+
+volumes:
+  db:
